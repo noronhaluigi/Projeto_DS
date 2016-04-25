@@ -10,7 +10,7 @@ import tkinter as tk
 class Tabulero:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("Jogo da Velha")        
+        self.window.title("Jogo da Velha!")        
         self.window.geometry("350x370")
         self.window.rowconfigure(0, minsize=100, weight=1)
         self.window.rowconfigure(1, minsize=100, weight=1)
@@ -18,6 +18,26 @@ class Tabulero:
         self.window.columnconfigure(0, minsize=100, weight=1)
         self.window.columnconfigure(1, minsize=100, weight=1)
         self.window.columnconfigure(2, minsize=100, weight=1)
+        
+        self.window.rowconfigure(3, minsize=20, weight=1)
+        texto_jogada = tk.Text(self.window)
+        texto_jogada.configure(text= jogadas_turnos(self))
+        texto_jogada.configure(font="Courier 20 bold")        
+        texto_jogada.grid(row=3,sticky = "ew" )
+       
+       
+        x = 1
+        def jogada_turnos(self, x):   
+            if x//2 == x/2:
+                print("Próxima jogada: X")
+                return 1
+            else:
+                print("Próxima jogada: O")
+                return 1
+        
+        x += jogada_turnos(self, x)
+         
+
 
         botão1 = tk.Button(self.window)
         botão1.configure(text=" ")
@@ -70,5 +90,11 @@ class Tabulero:
 
     def jogada(self):
         return True
+
+
+    def reinicia(self):
+        return True
+
+
 jogo = Tabulero()
 jogo.iniciar()
